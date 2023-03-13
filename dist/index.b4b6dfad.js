@@ -2926,21 +2926,13 @@ $parcel$ReactRefreshHelpers$98a3.prelude(module);
 try {
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _client = require("react-dom/client");
+var _mainView = require("./components/main-view/main-view");
 var _indexScss = require("./index.scss");
 const MyMovieApp = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "my-movie",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            children: "Good Morning"
-        }, void 0, false, {
-            fileName: "src/index.jsx",
-            lineNumber: 8,
-            columnNumber: 13
-        }, undefined)
-    }, void 0, false, {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
         fileName: "src/index.jsx",
         lineNumber: 7,
-        columnNumber: 9
+        columnNumber: 10
     }, undefined);
 };
 _c = MyMovieApp;
@@ -2948,7 +2940,7 @@ const container = document.querySelector("#root");
 const root = (0, _client.createRoot)(container);
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MyMovieApp, {}, void 0, false, {
     fileName: "src/index.jsx",
-    lineNumber: 16,
+    lineNumber: 13,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -2959,7 +2951,7 @@ $RefreshReg$(_c, "MyMovieApp");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6SBe1","./index.scss":"lJZlQ"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6SBe1","./index.scss":"lJZlQ","./components/main-view/main-view":"4gflv"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("4c0e66e86e97e1e9");
 
@@ -27277,6 +27269,264 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"9ef14f16c9401bcd":"8yPLk"}],"lJZlQ":[function() {},{}]},["3jCeN","cRMjL","d8Dch"], "d8Dch", "parcelRequirefa84")
+},{"9ef14f16c9401bcd":"8yPLk"}],"lJZlQ":[function() {},{}],"4gflv":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$f7a6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$f7a6.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MainView", ()=>MainView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _movieCard = require("../movie-card/movie-card");
+var _movieView = require("../movie-view/movie-view");
+var _s = $RefreshSig$();
+const MainView = ()=>{
+    _s();
+    const [movies, setMovies] = (0, _react.useState)([
+        {
+            id: 1,
+            title: "The Godfather Part II",
+            description: "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.",
+            Genre: {
+                name: "Drama",
+                description: "he drama genre is defined by conflict and often looks to reality rather than sensationalism. Emotions and intense situations are the focus, but where other genres might use unique or exciting moments to create a feeling, movies in the drama genre focus on common occurrences."
+            },
+            director: {
+                name: "Francis Ford Coppola",
+                Bio: "Francis Ford Coppola, (born April 7, 1939, Detroit, Michigan, U.S.), American motion-picture director, writer, and producer whose films range from sweeping epics to small-scale character studies. As the director of films such as The Godfather (1972), The Conversation (1974), and Apocalypse Now (1979), he enjoyed his greatest success and influence in the 1970s, when he attempted to create an alternative to the Hollywood system of film production and distribution.",
+                Birth: "1939"
+            },
+            Featured: false
+        },
+        {
+            id: 2,
+            title: "The Green Mile",
+            description: "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.",
+            Genre: {
+                name: "Fantasy",
+                description: "The fantasy genre is defined by both circumstance and setting inside a fictional universe with an unrealistic set of natural laws. The possibilities of fantasy are nearly endless, but the movies will often be inspired by or incorporate human myths."
+            },
+            director: {
+                name: "Frank Darabont",
+                Bio: "Frank Darabont is an American film director, screenwriter and producer. He has been nominated for three Academy Awards and a Golden Globe.",
+                Birth: "1959"
+            },
+            Featured: false
+        },
+        {
+            id: 3,
+            title: "The Godfather",
+            description: "The GodFather is a movie about The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.",
+            Genre: {
+                name: "Drama",
+                description: "he drama genre is defined by conflict and often looks to reality rather than sensationalism. Emotions and intense situations are the focus, but where other genres might use unique or exciting moments to create a feeling, movies in the drama genre focus on common occurrences."
+            },
+            director: {
+                name: "Francis Ford Coppola",
+                Bio: "Francis Ford Coppola, (born April 7, 1939, Detroit, Michigan, U.S.), American motion-picture director, writer, and producer whose films range from sweeping epics to small-scale character studies. As the director of films such as The Godfather (1972), The Conversation (1974), and Apocalypse Now (1979), he enjoyed his greatest success and influence in the 1970s, when he attempted to create an alternative to the Hollywood system of film production and distribution.",
+                Birth: "1939"
+            },
+            Featured: false
+        }
+    ]);
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+        movieData: selectedMovie,
+        onBackClick: ()=>setSelectedMovie(null)
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 65,
+        columnNumber: 7
+    }, undefined);
+    if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: " The movie list is empty! "
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 73,
+        columnNumber: 12
+    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactDefault.default).StrictMode, {
+            children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                    movieData: movie,
+                    onMovieClick: (newSelectedMovie)=>{
+                        setSelectedMovie(newSelectedMovie);
+                    }
+                }, movie.id, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 80,
+                    columnNumber: 11
+                }, undefined))
+        }, void 0, false, {
+            fileName: "src/components/main-view/main-view.jsx",
+            lineNumber: 78,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 77,
+        columnNumber: 5
+    }, undefined);
+};
+_s(MainView, "Gd91GYH9HLj9RSMMsKt6RJKLtXI=");
+_c = MainView;
+var _c;
+$RefreshReg$(_c, "MainView");
+
+  $parcel$ReactRefreshHelpers$f7a6.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"1UdJ0","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6SBe1"}],"bwuIu":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$67b2.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const MovieCard = ({ movieData , onMovieClick  })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        onClick: ()=>{
+            onMovieClick(movieData);
+        },
+        children: movieData.title
+    }, void 0, false, {
+        fileName: "src/components/movie-card/movie-card.jsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, undefined);
+};
+_c = MovieCard;
+var _c;
+$RefreshReg$(_c, "MovieCard");
+
+  $parcel$ReactRefreshHelpers$67b2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"1UdJ0","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6SBe1"}],"1UdJ0":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"ggaUx":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$e9f6.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieView", ()=>MovieView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const MovieView = ({ movieData , onBackClick  })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: " Title: "
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 5,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movieData.title
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 6,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 4,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: " Description: "
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 9,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movieData.description
+                    }, void 0, false, {
+                        fileName: "src/components/movie-view/movie-view.jsx",
+                        lineNumber: 10,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 8,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: onBackClick,
+                children: "Home"
+            }, void 0, false, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 12,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/movie-view/movie-view.jsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, undefined);
+};
+_c = MovieView;
+var _c;
+$RefreshReg$(_c, "MovieView");
+
+  $parcel$ReactRefreshHelpers$e9f6.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"1UdJ0","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6SBe1"}]},["3jCeN","cRMjL","d8Dch"], "d8Dch", "parcelRequirefa84")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
