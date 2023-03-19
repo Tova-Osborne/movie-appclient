@@ -12,13 +12,13 @@ export const MainView = () => {
     fetch("https://tovamovielistapp.herokuapp.com/movies")
       .then((response) => response.json())
       .then((data) => {
-        const moviesApi = data.movies.map((movies) => {
+        const moviesApi = data.map((movie) => {
           return {
-            id: movies.key,
-            title: movies.title,
-            description: movies.description,
-            genre: movies.genre.name,
-            director: movies.director.name,
+            id: movie._id,
+            title: movie.Title,
+            description: movie.Description,
+            genre: movie.Genre.Name,
+            director: movie.Director.Name,
           };
         });
 
