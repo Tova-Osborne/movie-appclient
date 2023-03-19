@@ -10,7 +10,7 @@ export const MainView = () => {
       title: "The Godfather Part II",
       description:
         "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.",
-      Genre: {
+      genre: {
         name: "Drama",
         description:
           "he drama genre is defined by conflict and often looks to reality rather than sensationalism. Emotions and intense situations are the focus, but where other genres might use unique or exciting moments to create a feeling, movies in the drama genre focus on common occurrences.",
@@ -27,7 +27,7 @@ export const MainView = () => {
       title: "The Green Mile",
       description:
         "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.",
-      Genre: {
+      genre: {
         name: "Fantasy",
         description:
           "The fantasy genre is defined by both circumstance and setting inside a fictional universe with an unrealistic set of natural laws. The possibilities of fantasy are nearly endless, but the movies will often be inspired by or incorporate human myths.",
@@ -44,7 +44,7 @@ export const MainView = () => {
       title: "The Godfather",
       description:
         "The GodFather is a movie about The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.",
-      Genre: {
+      genre: {
         name: "Drama",
         description:
           "he drama genre is defined by conflict and often looks to reality rather than sensationalism. Emotions and intense situations are the focus, but where other genres might use unique or exciting moments to create a feeling, movies in the drama genre focus on common occurrences.",
