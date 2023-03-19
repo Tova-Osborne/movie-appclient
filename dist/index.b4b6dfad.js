@@ -27287,67 +27287,35 @@ var _movieView = require("../movie-view/movie-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [movies, setMovies] = (0, _react.useState)([
-        {
-            id: 1,
-            title: "The Godfather Part II",
-            description: "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.",
-            genre: {
-                name: "Drama",
-                description: "he drama genre is defined by conflict and often looks to reality rather than sensationalism. Emotions and intense situations are the focus, but where other genres might use unique or exciting moments to create a feeling, movies in the drama genre focus on common occurrences."
-            },
-            director: {
-                name: "Francis Ford Coppola",
-                Bio: "Francis Ford Coppola, (born April 7, 1939, Detroit, Michigan, U.S.), American motion-picture director, writer, and producer whose films range from sweeping epics to small-scale character studies. As the director of films such as The Godfather (1972), The Conversation (1974), and Apocalypse Now (1979), he enjoyed his greatest success and influence in the 1970s, when he attempted to create an alternative to the Hollywood system of film production and distribution.",
-                Birth: "1939"
-            },
-            Featured: false
-        },
-        {
-            id: 2,
-            title: "The Green Mile",
-            description: "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.",
-            genre: {
-                name: "Fantasy",
-                description: "The fantasy genre is defined by both circumstance and setting inside a fictional universe with an unrealistic set of natural laws. The possibilities of fantasy are nearly endless, but the movies will often be inspired by or incorporate human myths."
-            },
-            director: {
-                name: "Frank Darabont",
-                Bio: "Frank Darabont is an American film director, screenwriter and producer. He has been nominated for three Academy Awards and a Golden Globe.",
-                Birth: "1959"
-            },
-            Featured: false
-        },
-        {
-            id: 3,
-            title: "The Godfather",
-            description: "The GodFather is a movie about The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.",
-            genre: {
-                name: "Drama",
-                description: "he drama genre is defined by conflict and often looks to reality rather than sensationalism. Emotions and intense situations are the focus, but where other genres might use unique or exciting moments to create a feeling, movies in the drama genre focus on common occurrences."
-            },
-            director: {
-                name: "Francis Ford Coppola",
-                Bio: "Francis Ford Coppola, (born April 7, 1939, Detroit, Michigan, U.S.), American motion-picture director, writer, and producer whose films range from sweeping epics to small-scale character studies. As the director of films such as The Godfather (1972), The Conversation (1974), and Apocalypse Now (1979), he enjoyed his greatest success and influence in the 1970s, when he attempted to create an alternative to the Hollywood system of film production and distribution.",
-                Birth: "1939"
-            },
-            Featured: false
-        }
-    ]);
+    const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    (0, _react.useEffect)(()=>{
+        fetch("https://tovamovielistapp.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
+            const moviesApi = data.map((movie)=>{
+                return {
+                    id: movie._id,
+                    title: movie.Title,
+                    description: movie.Description,
+                    genre: movie.Genre.Name,
+                    director: movie.Director.Name
+                };
+            });
+            setMovies(moviesApi);
+        });
+    }, []);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movieData: selectedMovie,
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 65,
+        lineNumber: 31,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: " The movie list is empty! "
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 73,
+        lineNumber: 39,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27359,21 +27327,21 @@ const MainView = ()=>{
                     }
                 }, movie.id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 80,
+                    lineNumber: 46,
                     columnNumber: 11
                 }, undefined))
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 78,
+            lineNumber: 44,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 77,
+        lineNumber: 43,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "qlUK/17HFYuzEHJbgVeOSsnG3p8=");
+_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27513,7 +27481,7 @@ const MovieView = ({ movieData , onBackClick  })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movieData.director.name
+                        children: movieData.director
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 14,
@@ -27535,7 +27503,7 @@ const MovieView = ({ movieData , onBackClick  })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movieData.genre.name
+                        children: movieData.genre
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 18,
