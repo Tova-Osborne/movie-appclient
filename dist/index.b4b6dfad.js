@@ -27297,7 +27297,7 @@ const MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         if (!token) return;
-        fetch("https://tovamovielistapp.herokuapp.com/movies", {
+        fetch("https://tovamovielistapp.herokuapp.com/login?", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -27335,7 +27335,8 @@ const MainView = ()=>{
                     title: movie.Title,
                     description: movie.Description,
                     genre: movie.Genre.Name,
-                    director: movie.Director.Name
+                    director: movie.Director.Name,
+                    image: movie.ImagePath
                 };
             });
             setMovies(moviesApi);
@@ -27346,14 +27347,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 66,
+        lineNumber: 67,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: " The movie list is empty! "
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 74,
+        lineNumber: 75,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27366,12 +27367,12 @@ const MainView = ()=>{
                         }
                     }, movie.id, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 81,
+                        lineNumber: 82,
                         columnNumber: 11
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 79,
+                lineNumber: 80,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27383,13 +27384,13 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 90,
+                lineNumber: 91,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 78,
+        lineNumber: 79,
         columnNumber: 5
     }, undefined);
 };
@@ -27434,6 +27435,7 @@ MovieCard.propTypes = {
     description: (0, _propTypesDefault.default).string,
     genre: (0, _propTypesDefault.default).string,
     director: (0, _propTypesDefault.default).string,
+    image: (0, _propTypesDefault.default).string,
     onMovieClick: (0, _propTypesDefault.default).func.isRequired
 };
 var _c;
@@ -28236,25 +28238,40 @@ const MovieView = ({ movieData , onBackClick  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    src: movieData.image,
+                    alt: "Movie Poster",
+                    height: "250px"
+                }, void 0, false, {
+                    fileName: "src/components/movie-view/movie-view.jsx",
+                    lineNumber: 5,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 4,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: " Title: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 5,
+                        lineNumber: 8,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: movieData.title
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 6,
+                        lineNumber: 9,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 4,
+                lineNumber: 7,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28263,20 +28280,20 @@ const MovieView = ({ movieData , onBackClick  })=>{
                         children: " Description: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 9,
+                        lineNumber: 12,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: movieData.description
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 10,
+                        lineNumber: 13,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 8,
+                lineNumber: 11,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28285,20 +28302,20 @@ const MovieView = ({ movieData , onBackClick  })=>{
                         children: " Director: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 13,
+                        lineNumber: 16,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: movieData.director
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 14,
+                        lineNumber: 17,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 12,
+                lineNumber: 15,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28307,20 +28324,20 @@ const MovieView = ({ movieData , onBackClick  })=>{
                         children: " Genre: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 17,
+                        lineNumber: 20,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: movieData.genre
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 18,
+                        lineNumber: 21,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 16,
+                lineNumber: 19,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28328,7 +28345,7 @@ const MovieView = ({ movieData , onBackClick  })=>{
                 children: "Home"
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 20,
+                lineNumber: 23,
                 columnNumber: 7
             }, undefined)
         ]
@@ -28371,7 +28388,7 @@ const LoginView = ({ onLoggedIn  })=>{
             access: username,
             secret: password
         };
-        fetch("https://tovamovielistapp.herokuapp.com/login", {
+        fetch("https://tovamovielistapp.herokuapp.com/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -28454,7 +28471,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"1UdJ0","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6SBe1","react":"21dqq"}],"4OGiN":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"1UdJ0","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6SBe1"}],"4OGiN":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$73d1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28473,13 +28490,13 @@ const SignupView = ()=>{
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
-    const [birthday, setBirthday] = (0, _react.useState)("");
-    const handleSubmit = (event)=>{};
+    const handleSubmit = (event)=>{
+        event.preventDefault();
+    };
     const data = {
         Username: username,
         Password: password,
-        Email: email,
-        Birthday: birthday
+        Email: email
     };
     fetch("https://tovamovielistapp.herokuapp.com/users", {
         method: "POST",
@@ -28504,7 +28521,7 @@ const SignupView = ()=>{
                         value: username,
                         onChange: (e)=>setUsername(e.target.value),
                         required: true,
-                        minLength: "5"
+                        minLength: "8"
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
                         lineNumber: 38,
@@ -28554,31 +28571,12 @@ const SignupView = ()=>{
                 lineNumber: 55,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                children: [
-                    "Birthday:",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "date",
-                        value: birthday,
-                        onChange: (e)=>setBirthday(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 66,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 64,
-                columnNumber: 7
-            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 type: "submit",
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 73,
+                lineNumber: 64,
                 columnNumber: 7
             }, undefined)
         ]
@@ -28588,7 +28586,7 @@ const SignupView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(SignupView, "jsOQN3GC2XlBG9ITlzCdpyJOnso=");
+_s(SignupView, "15GYNQRGZwIE4f5LB0Cz/BaTZf4=");
 _c = SignupView;
 var _c;
 $RefreshReg$(_c, "SignupView");
@@ -28598,6 +28596,6 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"1UdJ0","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6SBe1","react":"21dqq"}]},["3jCeN","cRMjL","d8Dch"], "d8Dch", "parcelRequirefa84")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"1UdJ0","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6SBe1"}]},["3jCeN","cRMjL","d8Dch"], "d8Dch", "parcelRequirefa84")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

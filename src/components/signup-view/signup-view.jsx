@@ -5,15 +5,15 @@ export const SignupView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
 
-  const handleSubmit = (event) => {};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
   const data = {
     Username: username,
     Password: password,
     Email: email,
-    Birthday: birthday,
   };
 
   fetch("https://tovamovielistapp.herokuapp.com/users", {
@@ -40,7 +40,7 @@ export const SignupView = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
-          minLength="5"
+          minLength="8"
         />
       </label>
       <label>
@@ -58,15 +58,6 @@ export const SignupView = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Birthday:
-        <input
-          type="date"
-          value={birthday}
-          onChange={(e) => setBirthday(e.target.value)}
           required
         />
       </label>

@@ -12,7 +12,7 @@ export const LoginView = ({ onLoggedIn }) => {
       secret: password,
     };
 
-    fetch("https://tovamovielistapp.herokuapp.com/login", {
+    fetch("https://tovamovielistapp.herokuapp.com/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

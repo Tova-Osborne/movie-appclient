@@ -19,7 +19,7 @@ export const MainView = () => {
       return;
     }
 
-    fetch("https://tovamovielistapp.herokuapp.com/movies", {
+    fetch("https://tovamovielistapp.herokuapp.com/login?", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
@@ -54,6 +54,7 @@ export const MainView = () => {
             description: movie.Description,
             genre: movie.Genre.Name,
             director: movie.Director.Name,
+            image: movie.ImagePath,
           };
         });
 
