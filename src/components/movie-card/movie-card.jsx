@@ -17,5 +17,6 @@ MovieCard.propTypes = {
   description: PropTypes.string,
   genre: PropTypes.string,
   director: PropTypes.string,
+  image: PropTypes.string,
   onMovieClick: PropTypes.func.isRequired,
 };
