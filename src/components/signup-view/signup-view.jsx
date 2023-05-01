@@ -8,28 +8,28 @@ export const SignupView = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  };
 
-  const data = {
-    Username: username,
-    Password: password,
-    Email: email,
-  };
+    const data = {
+      Username: username,
+      Password: password,
+      Email: email,
+    };
 
-  fetch("https://tovamovielistapp.herokuapp.com/users", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((response) => {
-    if (response.ok) {
-      alert("Signup successful");
-      window.location.reload();
-    } else {
-      alert("Signup failed");
-    }
-  });
+    fetch("https://tovamovielistapp.herokuapp.com/users", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+      if (response.ok) {
+        alert("Sign-up successful");
+        window.location.reload();
+      } else {
+        alert("Sign-up failed");
+      }
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit}>

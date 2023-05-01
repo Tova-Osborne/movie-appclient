@@ -4,15 +4,16 @@ import { useState } from "react";
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const data = {
-      access: username,
-      secret: password,
+      Username: username,
+      Password: password,
     };
 
-    fetch("https://tovamovielistapp.herokuapp.com/users", {
+    fetch("https://tovamovielistapp.herokuapp.com/login?", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -15,9 +15,7 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    if (!token) {
-      return;
-    }
+    if (!token) return;
 
     fetch("https://tovamovielistapp.herokuapp.com/login?", {
       headers: { Authorization: `Bearer ${token}` },
