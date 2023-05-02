@@ -17,7 +17,7 @@ export const MainView = () => {
   useEffect(() => {
     if (!token) return;
 
-    fetch("https://tovamovielistapp.herokuapp.com/login?", {
+    fetch("https://tovamovielistapp.herokuapp.com/", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
@@ -35,7 +35,6 @@ export const MainView = () => {
             setToken(token);
           }}
         />
-        or
         <SignupView />
       </>
     );
