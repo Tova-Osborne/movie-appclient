@@ -5,6 +5,9 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -26,21 +29,6 @@ export const MainView = () => {
       });
   }, [token]);
 
-  if (!user) {
-    return (
-      <>
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />
-        or
-        <SignupView />
-      </>
-    );
-  }
-
   useEffect(() => {
     fetch("https://tovamovielistapp.herokuapp.com/movies")
       .then((response) => response.json())
@@ -60,12 +48,33 @@ export const MainView = () => {
       });
   }, []);
 
+  if (!user) {
+    return (
+      <Row className="justify-content-md-center">
+        <Col md={5}>
+          <LoginView
+            onLoggedIn={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }}
+          />
+          OR
+          <SignupView />
+        </Col>
+      </Row>
+    );
+  }
+
   if (selectedMovie) {
     return (
-      <MovieView
-        movieData={selectedMovie}
-        onBackClick={() => setSelectedMovie(null)}
-      />
+      <Row>
+        <Col md={8}>
+          <MovieView
+            movieData={selectedMovie}
+            onBackClick={() => setSelectedMovie(null)}
+          />
+        </Col>
+      </Row>
     );
   }
 
@@ -74,27 +83,31 @@ export const MainView = () => {
   }
 
   return (
-    <div>
+    <Row>
       <React.StrictMode>
         {movies.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            movieData={movie}
-            onMovieClick={(newSelectedMovie) => {
-              setSelectedMovie(newSelectedMovie);
-            }}
-          />
+          <Col className="mb-5" key={movie.id} md={3}>
+            <MovieCard
+              movieData={movie}
+              onMovieClick={(newSelectedMovie) => {
+                setSelectedMovie(newSelectedMovie);
+              }}
+            />
+          </Col>
         ))}
       </React.StrictMode>
-      <button
-        onClick={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}
-      >
-        Logout
-      </button>
-    </div>
+      <Col md={8}>
+        <Button
+          variant="dark"
+          onClick={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+          }}
+        >
+          Logout
+        </Button>
+      </Col>
+    </Row>
   );
 };
