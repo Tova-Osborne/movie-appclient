@@ -2,8 +2,14 @@ import Accordion from "react-bootstrap/esm/Accordion";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
-export const MovieView = ({ movieData, onBackClick }) => {
+export const MovieView = ({ movies }) => {
+  const { movieID } = useParams();
+
+  const movie = movie.find((m) => m.id === bookID);
+
   return (
     <Row>
       <Col className="h-100 mb-5">
@@ -22,6 +28,7 @@ export const MovieView = ({ movieData, onBackClick }) => {
             <Accordion.Body>{movieData.description}</Accordion.Body>
           </Accordion.Item>
         </Accordion>
+        <Link></Link>
         <Button variant="dark" onClick={onBackClick}>
           Home
         </Button>
