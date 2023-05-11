@@ -2927,7 +2927,7 @@ try {
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _client = require("react-dom/client");
 var _mainView = require("./components/main-view/main-view");
-var _bootstrapMinCss = require("bootstrap/dist/css/bootstrap.min.css");
+// import "bootstrap/dist/css/bootstrap.min.css";
 var _indexScss = require("./index.scss");
 const MyMovieApp = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
@@ -2952,7 +2952,7 @@ $RefreshReg$(_c, "MyMovieApp");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6SBe1","./index.scss":"lJZlQ","./components/main-view/main-view":"4gflv","bootstrap/dist/css/bootstrap.min.css":"i5LP7"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6SBe1","./index.scss":"lJZlQ","./components/main-view/main-view":"4gflv"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("4c0e66e86e97e1e9");
 
@@ -28596,6 +28596,6 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"1UdJ0","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6SBe1"}],"i5LP7":[function() {},{}]},["3jCeN","cRMjL","d8Dch"], "d8Dch", "parcelRequirefa84")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"1UdJ0","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6SBe1"}]},["3jCeN","cRMjL","d8Dch"], "d8Dch", "parcelRequirefa84")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
