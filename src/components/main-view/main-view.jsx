@@ -15,10 +15,14 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    if (!token) return;
+    if (!token) {
+      return;
+    }
 
-    fetch("https://tovamovielistapp.herokuapp.com/", {
-      headers: { Authorization: `Bearer ${token}` },
+    fetch("https://tovamovielistapp.herokuapp.com/movies", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then((response) => response.json())
       .then((data) => {
@@ -54,7 +58,6 @@ export const MainView = () => {
             image: movie.ImagePath,
           };
         });
-
         setMovies(moviesApi);
       });
   }, []);
