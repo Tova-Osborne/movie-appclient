@@ -2,17 +2,38 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from "react-router-dom";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar class="navbar navbar-expand-lg navbar-light bg-light">
       <Container>
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-        </Nav>
+        <Navbar.Brand as={Link} to="/">
+          Movie App
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navnar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            {!user && (
+              <>
+                <Nav.Link as={Link} to="/login?">
+                  Login
+                </Nav.Link>
+                <Nav.Link as={Link} to="/signup">
+                  Signup
+                </Nav.Link>
+              </>
+            )}
+            {user && (
+              <>
+                <Nav.Link as={Link} to="/">
+                  Home
+                </Nav.Link>
+                <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
+              </>
+            )}
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );

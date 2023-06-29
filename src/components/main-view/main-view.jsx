@@ -5,6 +5,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import { NavigationBar } from "../navigation-bar/navigation-bar";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -44,22 +45,14 @@ export const MainView = () => {
       });
   }, [token]);
 
-  if (!user) {
-    return (
-      <>
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />
-        <SignupView />
-      </>
-    );
-  }
-
   return (
     <BrowserRouter>
+      <NavigationBar
+        user={user}
+        onLoggedOut={() => {
+          setUser(null);
+        }}
+      />
       <Row className="justify-content-md-center">
         <Routes>
           <Route
@@ -96,11 +89,11 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/movies/:Id"
+            path="/movies/:movieId"
             element={
               <>
                 {!user ? (
-                  <Navigate to="/login" replace />
+                  <Navigate to="/login?" replace />
                 ) : movies.length === 0 ? (
                   <Col> The movie list is empty! </Col>
                 ) : (
@@ -111,19 +104,19 @@ export const MainView = () => {
               </>
             }
           />
-          <Routes
+          <Route
             path="/"
             element={
               <>
                 {!user ? (
-                  <Navigate to="/login" replace />
+                  <Navigate to="/login?" replace />
                 ) : movies.length === 0 ? (
                   <Col> The movie list is empty! </Col>
                 ) : (
                   <>
                     {movies.map((movie) => (
-                      <Col className="mb-5" key={movie.id} md={3}>
-                        <MovieCard movie={movie} />
+                      <Col className="mb-5" key={movie._id} md={3}>
+                        <MovieCard movieData={movie} />
                       </Col>
                     ))}
                   </>
@@ -136,16 +129,3 @@ export const MainView = () => {
     </BrowserRouter>
   );
 };
-
-// <Col md={8}>
-//   <Button
-//     variant="dark"
-//     onClick={() => {
-//       setUser(null);
-//       setToken(null);
-//       localStorage.clear();
-//     }}
-//   >
-//     Logout
-//   </Button>
-// </Col>
