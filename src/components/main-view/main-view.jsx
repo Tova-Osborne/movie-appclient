@@ -21,7 +21,6 @@ export const MainView = () => {
     if (!token) {
       return;
     }
-    console.log(token);
 
     fetch("https://tovamovielistapp.herokuapp.com/movies", {
       headers: {
