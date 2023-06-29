@@ -18,19 +18,16 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    if (!token) return;
+    if (!token) {
+      return;
+    }
+    console.log(token);
 
-    fetch("https://tovamovielistapp.herokuapp.com/login?", {
-      headers: { Authorization: `Bearer ${token}` },
+    fetch("https://tovamovielistapp.herokuapp.com/movies", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
-  }, [token]);
-
-  useEffect(() => {
-    fetch("https://tovamovielistapp.herokuapp.com/movies")
       .then((response) => response.json())
       .then((data) => {
         const moviesApi = data.map((movie) => {
@@ -43,10 +40,23 @@ export const MainView = () => {
             image: movie.ImagePath,
           };
         });
-
         setMovies(moviesApi);
       });
-  }, []);
+  }, [token]);
+
+  if (!user) {
+    return (
+      <>
+        <LoginView
+          onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
+        <SignupView />
+      </>
+    );
+  }
 
   if (!user) {
     return (
