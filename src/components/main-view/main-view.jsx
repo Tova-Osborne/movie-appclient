@@ -18,6 +18,7 @@ export const MainView = () => {
     if (!token) {
       return;
     }
+    console.log(token);
 
     fetch("https://tovamovielistapp.herokuapp.com/movies", {
       headers: {
@@ -26,7 +27,17 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        const moviesApi = data.map((movie) => {
+          return {
+            id: movie._id,
+            title: movie.Title,
+            description: movie.Description,
+            genre: movie.Genre.Name,
+            director: movie.Director.Name,
+            image: movie.ImagePath,
+          };
+        });
+        setMovies(moviesApi);
       });
   }, [token]);
 
@@ -43,24 +54,6 @@ export const MainView = () => {
       </>
     );
   }
-
-  useEffect(() => {
-    fetch("https://tovamovielistapp.herokuapp.com/movies")
-      .then((response) => response.json())
-      .then((data) => {
-        const moviesApi = data.map((movie) => {
-          return {
-            id: movie._id,
-            title: movie.Title,
-            description: movie.Description,
-            genre: movie.Genre.Name,
-            director: movie.Director.Name,
-            image: movie.ImagePath,
-          };
-        });
-        setMovies(moviesApi);
-      });
-  }, []);
 
   if (selectedMovie) {
     return (
