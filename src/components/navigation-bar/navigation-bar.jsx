@@ -6,17 +6,17 @@ import { Link } from "react-router-dom";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
-    <Navbar class="navbar navbar-expand-lg navbar-light bg-light">
+    <Navbar className="navbar navbar-expand-lg navbar-light bg-light">
       <Container>
         <Navbar.Brand as={Link} to="/">
           Movie App
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navnar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {!user && (
               <>
-                <Nav.Link as={Link} to="/login?">
+                <Nav.Link as={Link} to="/login">
                   Login
                 </Nav.Link>
                 <Nav.Link as={Link} to="/signup">
@@ -28,6 +28,9 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
               <>
                 <Nav.Link as={Link} to="/">
                   Home
+                </Nav.Link>
+                <Nav.Link as={Link} to="/account">
+                  Account
                 </Nav.Link>
                 <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
               </>

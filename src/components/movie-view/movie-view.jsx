@@ -28,8 +28,11 @@ export const MovieView = ({ movies }) => {
             <Accordion.Body>{movie.description}</Accordion.Body>
           </Accordion.Item>
         </Accordion>
+        <Link to={`/favorites`}>
+          <Button className="btn btn-success">Favorite</Button>
+        </Link>
         <Link to={`/`}>
-          <Button className="back-button" variant="dark">
+          <Button className="btn-dark" variant="dark">
             Back
           </Button>
         </Link>

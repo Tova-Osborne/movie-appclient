@@ -6,6 +6,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { ProfileView } from "../profile-view/profile-view";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -17,12 +18,15 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [userData, setUserData] = useState([]);
 
+  // check if user has valid token
   useEffect(() => {
     if (!token) {
       return;
     }
+
+    //get movies list and store in Movies variable
 
     fetch("https://tovamovielistapp.herokuapp.com/movies", {
       headers: {
@@ -45,11 +49,40 @@ export const MainView = () => {
       });
   }, [token]);
 
+  useEffect(() => {
+    if (!token) {
+      return;
+    }
+
+    //get users list and store in UserData variable
+
+    fetch("https://tovamovielistapp.herokuapp.com/users/", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const userApi = data.map((userInfo) => {
+          return {
+            id: userInfo._id,
+            username: userInfo.Username,
+            password: userInfo.Password,
+            birthdate: userInfo.Birthdate,
+            favorites: userInfo.Favorites,
+          };
+        });
+        setUserData(userApi);
+      });
+  }, [token]);
+
   return (
     <BrowserRouter>
       <NavigationBar
         user={user}
         onLoggedOut={() => {
+          localStorage.removeItem(storedUser);
+          localStorage.removeItem(storedToken);
           setUser(null);
         }}
       />
@@ -99,6 +132,20 @@ export const MainView = () => {
                 ) : (
                   <Col md={8}>
                     <MovieView movies={movies} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="account"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login?" replace />
+                ) : (
+                  <Col md={8}>
+                    <ProfileView userData={user} />
                   </Col>
                 )}
               </>
