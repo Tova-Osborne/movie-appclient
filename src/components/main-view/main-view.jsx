@@ -45,20 +45,6 @@ export const MainView = () => {
 
   if (!user) {
     return (
-      <>
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />
-        <SignupView />
-      </>
-    );
-  }
-
-  if (!user) {
-    return (
       <Row className="justify-content-md-center">
         <Col md={5}>
           <LoginView
@@ -67,7 +53,6 @@ export const MainView = () => {
               setToken(token);
             }}
           />
-          OR
           <SignupView />
         </Col>
       </Row>
