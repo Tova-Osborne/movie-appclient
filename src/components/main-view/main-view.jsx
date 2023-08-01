@@ -7,10 +7,12 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { ProfileView } from "../profile-view/profile-view";
+import { FavoritesView } from "../profile-view/favorites-view";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { ChangeView } from "../profile-view/change-view";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -19,6 +21,7 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [userData, setUserData] = useState([]);
+  console.log(user);
 
   // check if user has valid token
   useEffect(() => {
@@ -48,7 +51,7 @@ export const MainView = () => {
         setMovies(moviesApi);
       });
   }, [token]);
-
+  console.log(movies);
   useEffect(() => {
     if (!token) {
       return;
@@ -56,7 +59,7 @@ export const MainView = () => {
 
     //get users list and store in UserData variable
 
-    fetch("https://tovamovielistapp.herokuapp.com/users/", {
+    fetch("https://tovamovielistapp.herokuapp.com/users", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -75,6 +78,7 @@ export const MainView = () => {
         setUserData(userApi);
       });
   }, [token]);
+  console.log(userData);
 
   return (
     <BrowserRouter>
@@ -131,7 +135,7 @@ export const MainView = () => {
                   <Col> The movie list is empty! </Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} />
+                    <MovieView movies={movies} user={user} />
                   </Col>
                 )}
               </>
@@ -145,7 +149,21 @@ export const MainView = () => {
                   <Navigate to="/login?" replace />
                 ) : (
                   <Col md={8}>
-                    <ProfileView userData={user} />
+                    <ProfileView user={user} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="favorites"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login?" replace />
+                ) : (
+                  <Col md={8}>
+                    <FavoritesView user={user} movies={movies} />
                   </Col>
                 )}
               </>

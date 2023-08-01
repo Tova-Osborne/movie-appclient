@@ -3,49 +3,31 @@ import { useState } from "react";
 import { useParams } from "react-router";
 import Form from "react-bootstrap/Form";
 import PropTypes from "prop-types";
-import { Button, Card, Row } from "react-bootstrap";
+import { Button, Card, Row, FloatingLabel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { MovieCard } from "../movie-card/movie-card";
-import { ChangeView } from "../change-view/change-view";
+import { ChangeView } from "./change-view";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+import { AccountView } from "./account-view";
+import { UpdateView } from "./update-view";
+import { ChangeView } from "./change-view";
+import { FavoritesView } from "./favorites-view";
 
-export const ProfileView = (userData) => {
+export const ProfileView = (movies, user) => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
 
   return (
-    <Row>
-      <Col className="h-100 mb-5">
-        <h3> Account Details</h3>
-        <div> Username: {storedUser.Username}</div>
-        <div> Email: {storedUser.Email} </div>
-        <div> Birthday: {storedUser.Birthdate} </div>
-      </Col>
-
-      <Col className="h-100 mb-5">
-        <h3>Manage Account Details</h3>
-        <div>
-          <ChangeView />
-        </div>
-      </Col>
-    </Row>
+    <Tabs defaultActiveKey="account" id="account-tab" className="mb-3">
+      <Tab eventKey="account" title="Account Overview">
+        <AccountView />
+      </Tab>
+      <Tab eventKey="account-details" title="Manage Account Details">
+        <ChangeView />
+      </Tab>
+    </Tabs>
   );
 };
-
-// export const MovieView = ({ movies }) => {
-//     const { movieId } = useParams();
-
-//     let favoriteMovies = movies.filter((m) => user.Favorites.includes(m._id));
-// };
-// ProfileView.PropTypes = {
-//     users: PropTypes.object.isRequired,
-// };
-
-// export const ProfileView = () => {
-
-//   useEffect(() => {
-//     if (!token) {
-//       return;
-//     }
