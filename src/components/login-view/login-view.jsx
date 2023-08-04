@@ -3,10 +3,13 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FloatingLabel } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/reducers/user";
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,15 +26,16 @@ export const LoginView = ({ onLoggedIn }) => {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Login response: ", data);
-        if (data.user) {
+      .then((response) => {
+        // .then((data) => {
+        //   console.log("Login response: ", data);
+        if (response.ok) {
+          dispatch(setUser(username));
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
-          onLoggedIn(data.user, data.token);
+          // onLoggedIn(data.user, data.token);
         } else {
-          alert("No such user");
+          alert("Login Failed");
         }
       })
       .catch((e) => {

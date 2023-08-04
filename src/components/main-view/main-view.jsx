@@ -8,19 +8,26 @@ import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { ProfileView } from "../profile-view/profile-view";
 import { FavoritesView } from "../profile-view/favorites-view";
+import { MoviesList } from "../movies-list/movies-list";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ChangeView } from "../profile-view/change-view";
+import { useSelector, useDispatch } from "react-redux";
+import { setMovies } from "../../redux/reducers/movies";
 
 export const MainView = () => {
-  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const movies = useSelector((state) => state.movies);
+  const user = useSelector((state) => state.user);
+  // const [user, setUser] = useState(null);
+  // const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser ? storedUser : null);
+  // const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [movies, setMovies] = useState([]);
+  // const [movies, setMovies] = useState([]);
   const [userData, setUserData] = useState([]);
+  const dispatch = useDispatch();
   console.log(user);
 
   // check if user has valid token
@@ -48,10 +55,11 @@ export const MainView = () => {
             image: movie.ImagePath,
           };
         });
-        setMovies(moviesApi);
+        dispatch(setMovies(moviesApi));
       });
   }, [token]);
   console.log(movies);
+
   useEffect(() => {
     if (!token) {
       return;
@@ -83,12 +91,12 @@ export const MainView = () => {
   return (
     <BrowserRouter>
       <NavigationBar
-        user={user}
-        onLoggedOut={() => {
-          localStorage.removeItem(storedUser);
-          localStorage.removeItem(storedToken);
-          setUser(null);
-        }}
+      // user={user}
+      // onLoggedOut={() => {
+      //   localStorage.removeItem(storedUser);
+      //   localStorage.removeItem(storedToken);
+      //   setUser(null);
+      // }}
       />
       <Row className="justify-content-md-center">
         <Routes>
@@ -111,14 +119,14 @@ export const MainView = () => {
             element={
               <>
                 {user ? (
-                  <Navigate to="/" />
+                  <Navigate to="/" replace />
                 ) : (
                   <Col md={5}>
                     <LoginView
-                      onLoggedIn={(user, token) => {
-                        setUser(user);
-                        setToken(token);
-                      }}
+                    // onLoggedIn={(user, token) => {
+                    //   setUser(user);
+                    //   setToken(token);
+                    // }}
                     />
                   </Col>
                 )}
@@ -135,7 +143,7 @@ export const MainView = () => {
                   <Col> The movie list is empty! </Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} user={user} />
+                    <MovieView />
                   </Col>
                 )}
               </>
@@ -179,11 +187,7 @@ export const MainView = () => {
                   <Col> The movie list is empty! </Col>
                 ) : (
                   <>
-                    {movies.map((movie) => (
-                      <Col className="mb-5" key={movie._id} md={3}>
-                        <MovieCard movieData={movie} />
-                      </Col>
-                    ))}
+                    <MoviesList />
                   </>
                 )}
               </>

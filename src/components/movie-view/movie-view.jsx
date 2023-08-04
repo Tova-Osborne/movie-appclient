@@ -11,13 +11,17 @@ import {
 } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export const MovieView = ({ movies, user }) => {
+export const MovieView = () => {
+  const movies = useSelector((state) => state.movies);
+  const user = useSelector((state) => state.user);
   const { movieId } = useParams();
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   console.log(movies);
-  const movie = movies.find((m) => m.id === movieId);
+  console.log(user);
+  const movie = movies.list.find((m) => m.id === movieId);
 
   const Data = {
     Favorites: [movieId],

@@ -2,9 +2,11 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 export const AccountView = () => {
-  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const user = useSelector((state) => state.user);
+  // const storedUser = JSON.parse(localStorage.getItem("user"));
   //   console.log(storedUser.Username);
   const storedToken = localStorage.getItem("token");
 
@@ -13,9 +15,9 @@ export const AccountView = () => {
       <Card.Body>
         <Card.Title>Account Details</Card.Title>
         <ListGroup variant="flush">
-          <ListGroupItem>Username: {storedUser.Username}</ListGroupItem>
-          <ListGroupItem>Email: {storedUser.Email}</ListGroupItem>
-          <ListGroupItem>Birthday: {storedUser.Birthdate}</ListGroupItem>
+          <ListGroupItem>Username: {user.Username}</ListGroupItem>
+          <ListGroupItem>Email: {user.Email}</ListGroupItem>
+          <ListGroupItem>Birthday: {user.Birthdate}</ListGroupItem>
         </ListGroup>
       </Card.Body>
     </Card>

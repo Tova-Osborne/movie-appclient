@@ -16,17 +16,20 @@ import { AccountView } from "./account-view";
 import { UpdateView } from "./update-view";
 import { ChangeView } from "./change-view";
 import { FavoritesView } from "./favorites-view";
+import { useSelector } from "react-redux";
 
-export const ProfileView = (movies, user) => {
-  const storedUser = JSON.parse(localStorage.getItem("user"));
+export const ProfileView = () => {
+  const user = useSelector((state) => state.user);
+
+  // const storedUser = JSON.parse(localStorage.getItem("user"));
 
   return (
     <Tabs defaultActiveKey="account" id="account-tab" className="mb-3">
       <Tab eventKey="account" title="Account Overview">
-        <AccountView />
+        <AccountView user={user} />
       </Tab>
       <Tab eventKey="account-details" title="Manage Account Details">
-        <ChangeView />
+        <ChangeView user={user} />
       </Tab>
     </Tabs>
   );
