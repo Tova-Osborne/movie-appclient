@@ -13,7 +13,7 @@ export const FavoritesView = ({ movies, user }) => {
   return (
     <>
       {favorites.map((movie) => (
-        <Col className="mb-5" key={movie._id} md={3}>
+        <Col className="mt-3" key={movie._id} md={8}>
           <MovieCard movieData={movie} />
         </Col>
       ))}

@@ -78,6 +78,13 @@ export const MovieView = ({ movies, user }) => {
 
   return (
     <Container>
+      <Row className="text-left mt-3">
+        <Col>
+          <Link to={`/`}>
+            <Button variant="dark">Back</Button>
+          </Link>
+        </Col>
+      </Row>
       <Row>
         <Col className="text-center">
           <Image
@@ -113,23 +120,18 @@ export const MovieView = ({ movies, user }) => {
           </p>
         </Col>
       </Row>
-      <Row className="justify-content-evenly">
+      <Row className="mb-3 text-center">
         <Col>
-          <Button variant="primary" size="lg" onClick={addToFavorites}>
+          <Button variant="primary" onClick={addToFavorites}>
             Add to Favorites
           </Button>
         </Col>
+      </Row>
+      <Row className="text-center">
         <Col>
-          <Button variant="warning" size="lg" onClick={handleDelete}>
+          <Button className="mb-12" variant="danger" onClick={handleDelete}>
             Remove from Favorites
           </Button>
-        </Col>
-        <Col>
-          <Link to={`/`}>
-            <Button size="lg" variant="dark">
-              Back
-            </Button>
-          </Link>
         </Col>
       </Row>
     </Container>

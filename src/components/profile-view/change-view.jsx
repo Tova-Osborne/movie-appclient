@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router";
 import Form from "react-bootstrap/Form";
 import PropTypes from "prop-types";
-import { Button, Card, FloatingLabel } from "react-bootstrap";
+import { Button, Card, FloatingLabel, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 
@@ -65,72 +65,82 @@ export const ChangeView = ({ user, onLoggedOut }) => {
   }
 
   return (
-    <Form>
-      <h3> Manage Account Details </h3>
-      <Form.Group controlId="formUsernameChange">
-        <FloatingLabel
-          controlId="floatingUsername"
-          label="Update Username"
-          className="mb-3"
-        >
-          <Form.Control
-            type="text"
-            value={newUsername}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Update username"
-            minLength="5"
-          />
-        </FloatingLabel>
-      </Form.Group>
-      <Form.Group controlId="formPasswordChange">
-        <FloatingLabel
-          controlId="floatingPassword"
-          label="Update Password"
-          className="mb-3"
-        >
-          <Form.Control
-            type="password"
-            value={newPassword}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Update Password"
-            minLength="8"
-          />
-        </FloatingLabel>
-      </Form.Group>
-      <Form.Group controlId="formEmailChange">
-        <FloatingLabel
-          controlId="floatingEmail"
-          label="Update Email"
-          className="mb-3"
-        >
-          <Form.Control
-            type="text"
-            value={newEmail}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Update email address"
-          />
-        </FloatingLabel>
-      </Form.Group>
-      <Form.Group controlId="formBirthdateChange">
-        <FloatingLabel
-          controlId="floatingBirthday"
-          label="Update Birthday"
-          className="mb-3"
-        >
-          <Form.Control
-            type="date"
-            value={newBirthdate}
-            onChange={(e) => setBirthdate(e.target.value)}
-            placeholder="Enter new birthday"
-          />
-        </FloatingLabel>
-      </Form.Group>
-      <Button variant="dark" onClick={handleUpdate}>
-        Update Account
-      </Button>
-      <Button variant="dark" onClick={handleDelete}>
-        Delete Account
-      </Button>
-    </Form>
+    <>
+      <Form>
+        <h3> Manage Account Details </h3>
+        <Form.Group controlId="formUsernameChange">
+          <FloatingLabel
+            controlId="floatingUsername"
+            label="Update Username"
+            className="mb-3"
+          >
+            <Form.Control
+              type="text"
+              value={newUsername}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Update username"
+              minLength="5"
+            />
+          </FloatingLabel>
+        </Form.Group>
+        <Form.Group controlId="formPasswordChange">
+          <FloatingLabel
+            controlId="floatingPassword"
+            label="Update Password"
+            className="mb-3"
+          >
+            <Form.Control
+              type="password"
+              value={newPassword}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Update Password"
+              minLength="8"
+            />
+          </FloatingLabel>
+        </Form.Group>
+        <Form.Group controlId="formEmailChange">
+          <FloatingLabel
+            controlId="floatingEmail"
+            label="Update Email"
+            className="mb-3"
+          >
+            <Form.Control
+              type="text"
+              value={newEmail}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Update email address"
+            />
+          </FloatingLabel>
+        </Form.Group>
+        <Form.Group controlId="formBirthdateChange">
+          <FloatingLabel
+            controlId="floatingBirthday"
+            label="Update Birthday"
+            className="mb-3"
+          >
+            <Form.Control
+              type="date"
+              value={newBirthdate}
+              onChange={(e) => setBirthdate(e.target.value)}
+              placeholder="Enter new birthday"
+            />
+          </FloatingLabel>
+        </Form.Group>
+        <Row>
+          <Col>
+            <Button size="sm" variant="primary" onClick={handleUpdate}>
+              Update Account
+            </Button>
+          </Col>
+        </Row>
+        <Row className="mt-2">
+          <Col>
+            <Button size="sm" variant="danger" onClick={handleDelete}>
+              Delete Account
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+    </>
   );
 };

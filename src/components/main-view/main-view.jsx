@@ -13,6 +13,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ChangeView } from "../profile-view/change-view";
+import { MoviesFilter } from "../movie-filter/movie-filter";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -179,11 +180,9 @@ export const MainView = () => {
                   <Col> The movie list is empty! </Col>
                 ) : (
                   <>
-                    {movies.map((movie) => (
-                      <Col className="mb-5" key={movie._id} md={3}>
-                        <MovieCard movieData={movie} />
-                      </Col>
-                    ))}
+                    <Col className="mb-5">
+                      <MoviesFilter movies={movies} />
+                    </Col>
                   </>
                 )}
               </>
@@ -194,3 +193,6 @@ export const MainView = () => {
     </BrowserRouter>
   );
 };
+
+// {movies.map((movie) => (
+// key={movie._id}
